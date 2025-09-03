@@ -1,7 +1,7 @@
 <?php
 function connexion() {
     try {
-        $dsn = 'mysql:host=' . 'localhost' . ';dbname=' . 'artbox'; 
+        $dsn = 'mysql:host=' . 'localhost' . ';dbname=' . 'The Artbox'; 
         $bdd = new PDO($dsn, 'root', '');                             // Création de l'objet PDO
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // PDO lance une erreur si ça ne marche pas
         return $bdd;                                                  
