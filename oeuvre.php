@@ -1,27 +1,27 @@
 <?php
-    require 'header.php';
-    require 'oeuvres.php';
+require 'header.php';
+include('bdd.php');
 
-    // Si l'URL ne contient pas d'id, on redirige sur la page d'accueil
-    if(empty($_GET['id'])) {
-        header('Location: index.php');
-    }
+$bdd = connexion(); // Connexion à la BDD
 
-    $oeuvre = null;
+// Si l'URL ne contient pas d'id ou id invalide, redirection 
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    header('Location: index.php');
+    exit;
+}
 
-    // On parcourt les oeuvres du tableau afin de rechercher celle qui a l'id précisé dans l'URL
-    foreach($oeuvres as $o) {
-        // intval permet de transformer l'id de l'URL en un nombre (exemple : "2" devient 2)
-        if($o['id'] === intval($_GET['id'])) {
-            $oeuvre = $o;
-            break; // On stoppe le foreach si on a trouvé l'oeuvre
-        }
-    }
+$id = (int)$_GET['id'];
 
-    // Si aucune oeuvre trouvé, on redirige vers la page d'accueil
-    if(is_null($oeuvre)) {
-        header('Location: index.php');
-    }
+// Requête préparée pour récupérer l'oeuvre correspondante
+$recup = $bdd->prepare('SELECT * FROM oeuvres WHERE id = :id');
+$recup->execute(['id' => $id]);
+$oeuvre = $recup->fetch();
+
+// Si aucune œuvre trouvée, redirection
+if (!$oeuvre) {
+    header('Location: index.php');
+    exit;
+}
 ?>
 
 <article id="detail-oeuvre">
@@ -31,9 +31,7 @@
     <div id="contenu-oeuvre">
         <h1><?= $oeuvre['titre'] ?></h1>
         <p class="description"><?= $oeuvre['artiste'] ?></p>
-        <p class="description-complete">
-             <?= $oeuvre['description'] ?>
-        </p>
+        <p class="description-complete"><?= $oeuvre['description'] ?></p>
     </div>
 </article>
 
