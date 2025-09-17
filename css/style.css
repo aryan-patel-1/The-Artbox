@@ -47,21 +47,21 @@ footer {
 
 
 
-#liste-oeuvres {
+#list-artworks {
     display: flex;
     flex-wrap: wrap;
 }
 
-.oeuvre {
+.artwork {
     width: 33.33%;
     padding: 15px;
 }
 
-.oeuvre img {
+.artwork img {
     width: 100%;
 }
 
-.oeuvre h2, #detail-oeuvre h1 {
+.artwork h2, #detail-artwork h1 {
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 0;
@@ -69,14 +69,14 @@ footer {
     font-size: 30px;
 }
 
-.oeuvre .description, #detail-oeuvre .description {
+.artwork .description, #detail-artwork .description {
     font-style: italic;
     margin-top: 0;
     font-size: 12px;
     margin-bottom: 20px;
 }
 
-#detail-oeuvre {
+#detail-artwork {
     display: flex;
     flex-wrap: wrap;
     align-items: end;
@@ -86,17 +86,17 @@ footer {
     padding: 0 15px;
 }
 
-#img-oeuvre {
+#img-artwork {
     margin-right: 25px;
 }
 
-#img-oeuvre img {
+#img-artwork img {
     max-width: 470px;
     margin: auto;
     display: block;
 }
 
-#contenu-oeuvre {
+#content-artwork {
     max-width: 470px;
 }
 
@@ -135,27 +135,27 @@ input[type="submit"] {
 
 
 @media (max-width: 850px) {
-    .oeuvre {
+    .artwork {
         width: 50%;
     }
 
-    #img-oeuvre {
+    #img-artwork {
         margin-right: 0;
         width: 100%;
     }
 
-    #img-oeuvre img {
+    #img-artwork img {
         width: 100%;
     }
 
-    #contenu-oeuvre {
+    #content-artwork {
         width: 100%;
         margin: auto;
     }
 }
 
 @media (max-width: 600px) {
-    .oeuvre {
+    .artwork {
         width: 100%;
     }
 
