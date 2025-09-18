@@ -3,15 +3,15 @@ require 'header.php';
 include('request/connection.php');
 include 'request/getArtworkById.php' ; 
 
-$database = connection(); // Connection à la BDD
-
-$id = (int)$_GET['id']; // Variable id
-
 // Si l'URL ne contient pas d'id ou id invalide, redirection 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
     exit;
 }
+
+$database = connection(); // Connection à la BDD
+$id = (int)$_GET['id']; // Variable id
+
 
 $artwork = getArtworkById($id) ; 
 
