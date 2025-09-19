@@ -1,7 +1,7 @@
 <?php
-require 'header.php';
-include('request/connection.php');
-include 'request/getArtworkById.php' ; 
+require_once 'header.php';
+include_once('services/connection.php');
+include_once('services/request.php') ; 
 
 // Si l'URL ne contient pas d'id ou id invalide, redirection 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -24,13 +24,13 @@ if (!$artwork) {
 
 <article id="detail-artwork">
     <div id="img-artwork">
-        <img src="<?= $artwork['image'] ?>" alt="<?= $artwork['title'] ?>">
+        <img src="<?= $artwork['image_path'] ?>" alt="<?= $artwork['title'] ?>">
     </div>
     <div id="content-artwork">
         <h1><?= $artwork['title'] ?></h1>
-        <p class="description"><?= $artwork['artist'] ?></p>
+        <p class="description"><?= $artwork['artist_name'] ?></p>
         <p class="description-complet"><?= $artwork['description'] ?></p>
     </div>
 </article>
 
-<?php require 'footer.php'; ?>
+<?php require_once 'footer.php'; ?>

@@ -1,19 +1,19 @@
 <?php
-include 'request/validateForm.php';
-include 'request/displayErrors.php';
-include 'request/addArtwork.php';
+include_once 'services/validateForm.php';
+include_once 'services/displayErrors.php';
+include_once 'services/addArtwork.php';
 
 $errors = validateForm($_POST);
 
 if (!empty($errors)) {
     displayErrors($errors);
-    exit;
+    
 } else {
     $data = [
         'title'       => htmlspecialchars($_POST['title']),
         'description' => htmlspecialchars($_POST['description']),
-        'artist'     => htmlspecialchars($_POST['artist']),
-        'image'       => htmlspecialchars($_POST['image'])
+        'artist_name'     => htmlspecialchars($_POST['artist_name']),
+        'image_path'       => htmlspecialchars($_POST['image_path'])
     ];
 
     $newId = addArtwork($data);

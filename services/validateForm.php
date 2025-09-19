@@ -7,7 +7,7 @@ function validateForm($data) {
         $errors[] = "Title is required";
     }
     
-    if (empty($data['artist'])) {
+    if (empty($data['artist_name'])) {
         $errors[] = "Artist is required";
     }
     
@@ -17,9 +17,9 @@ function validateForm($data) {
         $errors[] = "Description must contain at least 3 characters";
     }
     
-    if (empty($data['image'])) {
+    if (empty($data['image_path'])) {
         $errors[] = "Image URL is required";
-    } elseif (!filter_var($data['image'], FILTER_VALIDATE_URL)) {
+    } elseif (!filter_var($data['image_path'], FILTER_VALIDATE_URL)) {
         $errors[] = "Image URL is not valid";
     }
     
